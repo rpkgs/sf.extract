@@ -1,4 +1,4 @@
-library(exactextractr)
+library(sf.extract)
 library(extract2)
 library(raster)
 library(sf)

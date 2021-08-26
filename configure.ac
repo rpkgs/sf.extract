@@ -1,7 +1,7 @@
 # adapted from configure.ac used in rgeos package (Roger Bivand)
 define([pkgversion], esyscmd([sh -c "grep Version: DESCRIPTION | cut -d' ' -f2 | tr -d '\n'"]))
 
-AC_INIT(exactextractr, [pkgversion], dbaston@isciences.com)
+AC_INIT(sf.extract, [pkgversion], dbaston@isciences.com)
 AC_MSG_NOTICE([${PACKAGE_NAME}: ${PACKAGE_VERSION}])
 
 AC_CONFIG_SRCDIR(src/exact_extract.cpp)

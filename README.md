@@ -47,4 +47,4 @@ res = foreach(file = files, i = icount()) %do% {
 ##  References
 
 1. https://github.com/isciences/exactextract
-2. https://github.com/isciences/exactextractr
+2. https://github.com/isciences/sf.extract

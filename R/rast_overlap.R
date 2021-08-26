@@ -1,14 +1,12 @@
 #' rast_overlap
 #' 
-#' Extract raster overlapping info by the function `[exactextractr:::CPP_exact_extract()]`
+#' Extract raster overlapping info by the function `[sf.extract:::CPP_exact_extract()]`
 #' 
 #' @param r raster
 #' @param wkb WKB objects, e.g.
 #' `sf::st_as_binary(sf::st_geometry(basins), EWKB=TRUE)`
-#' @inheritParams exactextractr::exact_extract
 #' 
 #' @keywords internal
-#' @seealso [exactextractr::exact_extract()]
 #' @import sf
 #' @export
 rast_overlap <- function(r, wkb,
@@ -30,7 +28,7 @@ rast_overlap <- function(r, wkb,
     names = names(r)
     if (length(names) <= 1) names = "values"
 
-    exactextractr:::CPP_exact_extract(r, NULL, wkb,
+    sf.extract:::CPP_exact_extract(r, NULL, wkb,
         default_value, default_weight,
         include_xy ,
         include_cell ,

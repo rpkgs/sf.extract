@@ -1,4 +1,4 @@
-library(exactextractr)
+library(sf.extract)
 library(extract2)
 library(raster)
 library(sf)
@@ -15,7 +15,7 @@ system.time(lst <- st_extract(files, blocks))
 
 # 140.97s
 library(plyr)
-## 2. exactextractr way
+## 2. sf.extract way
 wkbs = sf::st_as_binary(sf::st_geometry(shp), EWKB=TRUE)
 bandNames <- function(file) names(rast(file))
 rs = files %>% map(rast) %>% do.call(c, .)

@@ -22,7 +22,7 @@ overlap <- function(r, geoms, return.id = FALSE) {
     # on.exit(readStop(r))
 
     blocks <- llply(geoms, function(wkb) {
-        ret <- exactextractr:::CPP_exact_extract2(r, wkb = wkb)
+        ret <- sf.extract:::CPP_exact_extract2(r, wkb = wkb)
         names(ret)[3] <- "fraction"
         dim <- dim(ret$fraction)
         ret$nrow <- dim[1]

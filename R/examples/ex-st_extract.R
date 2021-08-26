@@ -1,6 +1,6 @@
 \dontrun{
 library(raster)
-library(exactextractr)
+library(sf.extract)
 library(extract2)
 
 # shape files
@@ -36,7 +36,7 @@ st_extract(b_in, blocks, fun = sf_sum) # no colnames
 st_extract(b_in, blocks, fun = sf_sum, weight = TRUE)
 st_extract(b_in, blocks, fun = sf_var, weight = TRUE)
 
-## 3. compared with exactextractr
+## 3. compared with sf.extract
 files_10 = rep(files, 10)
 system.time(r_0 <- exact_extract(brick(files[1]), st, 'mean'))
 

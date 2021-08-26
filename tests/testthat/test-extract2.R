@@ -1,6 +1,6 @@
 library(raster)
 library(terra)
-library(exactextractr)
+library(sf.extract)
 
 test_that("multiplication works", {
    
