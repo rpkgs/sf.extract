@@ -8,7 +8,7 @@
 #' @param weight boolean. If true, `fraction = fraction * area`
 #' @param ... other parameters to `fun`
 #'
-#' @seealso [sf.extract::exact_extract()], [sf_func()]
+#' @seealso [sf_func()]
 #' @example R/examples/ex-st_extract.R
 #' @importFrom terra readValues readStart readStop
 NULL

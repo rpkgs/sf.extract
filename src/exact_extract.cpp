@@ -43,7 +43,7 @@ using exactextract::RasterSource;
 #include <string>
 
 // [[Rcpp::export]]
-Rcpp::List CPP_exact_extract2(Rcpp::S4 & rast, const Rcpp::RawVector & wkb) {
+Rcpp::List CPP_exact_extract_wkb(Rcpp::S4 & rast, const Rcpp::RawVector & wkb) {
   GEOSAutoHandle geos;
   
   auto grid = make_grid(rast);

@@ -1,4 +1,4 @@
 library(testthat)
-library(extract2)
+library(sf.extract)
 
-test_check("extract2")
+test_check("sf.extract")

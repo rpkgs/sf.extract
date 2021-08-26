@@ -3,11 +3,11 @@ library(terra)
 library(sf.extract)
 
 test_that("multiplication works", {
-   
+
    expect_true({
-    file_shp = system.file("shp/Continents.shp", package = "extract2")
-    files = system.file("raster/PML2_yearly_static2017-01-01.tif", package = "extract2")
-    
+    file_shp = system.file("shp/Continents.shp", package = "sf.extract")
+    files = system.file("raster/PML2_yearly_static2017-01-01.tif", package = "sf.extract")
+
     # shape files
     st <- sf::read_sf(file_shp)
     shp <- sf::as_Spatial(st)
@@ -17,7 +17,12 @@ test_that("multiplication works", {
     b_in = raster::brick(files[1])[[1]] %>% readAll() %>% rast() # in memory
 
     ## 1. test for different poly obj
-    r1 = st_extract(files, st) # sf obj
+    r_name = st_extract(files, st) # sf obj
+    r_Id  = st_extract(files, st[, 2]) # sf obj
+
+    expect_equal(r_name[[1]]$CONTINENT, st$CONTINENT)
+    expect_equal(r_Id[[1]]$ID, st$ID)
+
     r2 = st_extract(files, shp) # Spatial obj
     # get overlaped blocks first
     blocks <- overlap(b, st)
@@ -31,7 +36,7 @@ test_that("multiplication works", {
     # default weight = TRUE, using area.weight, result differ significantly
 
     ## 2. test for different `st_` functions
-    st_extract(b_in, blocks, fun = sf_median) 
+    st_extract(b_in, blocks, fun = sf_median)
     st_extract(b_in, blocks, fun = sf_sd)
     st_extract(b_in, blocks, fun = sf_sum) %>% print() # no colnames
     st_extract(b_in, blocks, fun = sf_sum, weight = TRUE)

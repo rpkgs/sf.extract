@@ -5,8 +5,8 @@ CPP_coverage_fraction <- function(rast, wkb, crop) {
     .Call(`_sf_extract_CPP_coverage_fraction`, rast, wkb, crop)
 }
 
-CPP_exact_extract2 <- function(rast, wkb) {
-    .Call(`_sf_extract_CPP_exact_extract2`, rast, wkb)
+CPP_exact_extract_wkb <- function(rast, wkb) {
+    .Call(`_sf_extract_CPP_exact_extract_wkb`, rast, wkb)
 }
 
 CPP_exact_extract <- function(rast, weights, wkb, default_value, default_weight, include_xy, include_cell_number, include_area, area_weights, coverage_areas, p_area_method, include_cols, src_names, p_weights_names, warn_on_disaggregate) {

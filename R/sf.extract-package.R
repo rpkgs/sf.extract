@@ -1,4 +1,6 @@
-#' @importFrom magrittr set_names set_colnames set_rownames `%>%` `%<>%` mod
+#' @importFrom magrittr set_names set_colnames set_rownames `%>%` `%<>%` mod 
+#' set_attr
+#' 
 #' @keywords internal
 "_PACKAGE"
 

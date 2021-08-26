@@ -23,15 +23,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// CPP_exact_extract2
-Rcpp::List CPP_exact_extract2(Rcpp::S4& rast, const Rcpp::RawVector& wkb);
-RcppExport SEXP _sf_extract_CPP_exact_extract2(SEXP rastSEXP, SEXP wkbSEXP) {
+// CPP_exact_extract_wkb
+Rcpp::List CPP_exact_extract_wkb(Rcpp::S4& rast, const Rcpp::RawVector& wkb);
+RcppExport SEXP _sf_extract_CPP_exact_extract_wkb(SEXP rastSEXP, SEXP wkbSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::S4& >::type rast(rastSEXP);
     Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type wkb(wkbSEXP);
-    rcpp_result_gen = Rcpp::wrap(CPP_exact_extract2(rast, wkb));
+    rcpp_result_gen = Rcpp::wrap(CPP_exact_extract_wkb(rast, wkb));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -96,7 +96,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_sf_extract_CPP_coverage_fraction", (DL_FUNC) &_sf_extract_CPP_coverage_fraction, 3},
-    {"_sf_extract_CPP_exact_extract2", (DL_FUNC) &_sf_extract_CPP_exact_extract2, 2},
+    {"_sf_extract_CPP_exact_extract_wkb", (DL_FUNC) &_sf_extract_CPP_exact_extract_wkb, 2},
     {"_sf_extract_CPP_exact_extract", (DL_FUNC) &_sf_extract_CPP_exact_extract, 15},
     {"_sf_extract_CPP_stats", (DL_FUNC) &_sf_extract_CPP_stats, 10},
     {"_sf_extract_CPP_resample", (DL_FUNC) &_sf_extract_CPP_resample, 3},

@@ -8,7 +8,6 @@
 #' @example R/examples/ex_sf_func.R
 #' 
 #' @importFrom plyr llply
-#' @import sf.extract
 #' @import matrixStats
 #' @export
 sf_func = function(FUN) {

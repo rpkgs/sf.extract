@@ -14,15 +14,13 @@
 #' @export
 overlap <- function(r, geoms, return.id = FALSE) {
     r %<>% check_raster() %>% .[[1]]
-    r %<>% raster::raster()
-    area <- raster::area(r) %>% rast()
+    # r %<>% raster::raster()
+    area <- raster::area(raster::raster(r)) %>% rast()
     geoms %<>% check_wkb() # convert to wkbs
-
     # readStart(r)
     # on.exit(readStop(r))
-
     blocks <- llply(geoms, function(wkb) {
-        ret <- sf.extract:::CPP_exact_extract2(r, wkb = wkb)
+        ret <- CPP_exact_extract_wkb(r, wkb = wkb)
         names(ret)[3] <- "fraction"
         dim <- dim(ret$fraction)
         ret$nrow <- dim[1]
@@ -39,7 +37,7 @@ overlap <- function(r, geoms, return.id = FALSE) {
         ret
     }, .progress = "text")
     attr(blocks, "Id") = attr(geoms, "Id")
-    
+
     if (return.id) {
         getBlockValues(r, blocks)
     } else {
@@ -82,7 +80,9 @@ check_overlap <- function(geoms, r) {
     geoms %<>% check_wkb()
     if ("WKB" %in% class(geoms)) {
         b <- rast(r[[1]]) #%>% readAll()
-        geoms <- overlap(b, geoms, return.id = FALSE)
+        Id <- attr(geoms, "Id")
+        geoms <- overlap(b, geoms, return.id = FALSE) %>%
+            set_attr("Id", Id)
     }
     geoms
 }
@@ -97,7 +97,8 @@ check_wkb <- function(geoms) {
             set_names(Id)
         attr(geoms, "Id") <- Id
     } else {
-        attr(geoms, "Id") <- seq_along(geoms)
+        if (is.null(attr(geoms, "Id")))
+            attr(geoms, "Id") <- seq_along(geoms)
     }
     geoms
 }
