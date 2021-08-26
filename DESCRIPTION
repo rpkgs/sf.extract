@@ -1,0 +1,23 @@
+Package: sf.extract
+Title: Fast Extraction from Raster Datasets using Polygons
+Description: exactextractr for multiple raster files
+Version: 0.1.2
+Authors@R: c(
+    person("Dongdong", "Kong", role = c("aut", "cre"), email = "kongdd.sysu@gmail.com"))
+Depends:
+    R (>= 3.4)
+Imports: 
+    terra,
+    plyr,
+    data.table,
+    matrixStats
+Suggests: 
+    testthat,
+    covr, stringr
+Remotes:
+    rpkgs/exactextractr
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

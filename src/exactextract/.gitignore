@@ -1,0 +1,9 @@
+Makefile
+cmake-build-*
+*.csv
+*.o
+*.swo
+*.swp
+.vscode
+.idea/
+callgrind.out.*
