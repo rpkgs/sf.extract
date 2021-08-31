@@ -23,7 +23,9 @@ The goal of sf.extract is to ...
 ## Installation
 
 ``` r
-remotes::install_gitlab("cug-hydro/sf.extract")
+# remotes::install_gitlab("cug-hydro/sf.extract") # not used
+# remotes::install_github("rpkgs/sf.extract")     # only for private
+install.packages("sf.extract-0.1.2.tar.gz", repos = NULL, type = "source", dependencies = TRUE)
 ```
 
 ## Example
@@ -79,4 +81,4 @@ st_extract(b_in, blocks, fun = sf_var, weight = TRUE)
 ##  References
 
 1. https://github.com/isciences/exactextract
-2. https://github.com/isciences/sf.extract
+2. https://github.com/isciences/exactextractr
