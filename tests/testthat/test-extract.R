@@ -2,6 +2,7 @@ library(raster)
 library(terra)
 library(sf.extract)
 
+skip_on_ci()
 test_that("multiplication works", {
 
    expect_true({

@@ -8,10 +8,12 @@ Depends:
     R (>= 3.4)
 Imports: 
     terra,
+    sf, 
     plyr,
     data.table,
     matrixStats,
-    Rcpp
+    Rcpp, 
+    magrittr
 Suggests: 
     testthat,
     covr, stringr
