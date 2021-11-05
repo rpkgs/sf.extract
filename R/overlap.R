@@ -17,8 +17,14 @@ overlap <- function(r, geoms, return.id = FALSE) {
     # r %<>% raster::raster()
     area <- raster::area(raster::raster(r)) %>% rast()
     geoms %<>% check_wkb() # convert to wkbs
-    # readStart(r)
-    # on.exit(readStop(r))
+
+    .startReading(r)
+    .startReading(area)
+    on.exit({
+        .stopReading(r)
+        .stopReading(area)
+    })
+
     blocks <- llply(geoms, function(wkb) {
         ret <- CPP_exact_extract_wkb(r, wkb = wkb)
         names(ret)[3] <- "fraction"

@@ -1,28 +1,30 @@
 library(raster)
 library(terra)
+library(sf)
 library(sf.extract)
 
-skip_on_ci()
+# skip_on_ci()
 test_that("multiplication works", {
-
-   expect_true({
-    file_shp = system.file("shp/Continents.shp", package = "sf.extract")
-    files = system.file("raster/PML2_yearly_static2017-01-01.tif", package = "sf.extract")
+  expect_true({
+    files = system.file("raster/PML2_yearly_static2017-01-01_2deg.tif", package = "sf.extract")
 
     # shape files
-    st <- sf::read_sf(file_shp)
-    shp <- sf::as_Spatial(st)
-    wkbs = sf::st_as_binary(sf::st_geometry(st), EWKB = TRUE) %>% set_names(st[[1]])
+    # file_shp = system.file("shp/Continents.shp", package = "sf.extract")
+    # st <- sf::read_sf(file_shp)
+    # shp <- sf::as_Spatial(st)
+    shp = basin_Baihe
+    st = st_as_sf(shp)
+    wkbs = sf::st_as_binary(sf::st_geometry(st), EWKB = TRUE) %>% set_names(st[["name"]])
 
     b <- rast(files[1]) # read raster
-    b_in = raster::brick(files[1])[[1]] %>% readAll() %>% rast() # in memory
+    b_in = raster::brick(files[1]) %>% readAll() %>% rast() # in memory
 
     ## 1. test for different poly obj
     r_name = st_extract(files, st) # sf obj
     r_Id  = st_extract(files, st[, 2]) # sf obj
 
-    expect_equal(r_name[[1]]$CONTINENT, st$CONTINENT)
-    expect_equal(r_Id[[1]]$ID, st$ID)
+    expect_equal(r_name[[1]]$depth, st$depth)
+    expect_equal(r_Id[[1]]$name, st$name)
 
     r2 = st_extract(files, shp) # Spatial obj
     # get overlaped blocks first
@@ -39,9 +41,9 @@ test_that("multiplication works", {
     ## 2. test for different `st_` functions
     st_extract(b_in, blocks, fun = sf_median)
     st_extract(b_in, blocks, fun = sf_sd)
-    st_extract(b_in, blocks, fun = sf_sum) %>% print() # no colnames
+    st_extract(b_in, blocks, fun = sf_sum) %>% print() 
     st_extract(b_in, blocks, fun = sf_sum, weight = TRUE)
     st_extract(b_in, blocks, fun = sf_var, weight = TRUE)
     TRUE
-   })
+  })
 })
