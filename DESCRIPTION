@@ -7,7 +7,7 @@ Authors@R: c(
 Depends:
     R (>= 3.4)
 Imports: 
-    terra,
+    terra, raster,
     sf, 
     plyr,
     data.table,
@@ -16,7 +16,7 @@ Imports:
     magrittr
 Suggests: 
     testthat,
-    covr, stringr
+    covr, stringr, sp
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

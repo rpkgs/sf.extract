@@ -45,15 +45,15 @@ setGeneric("st_extract", function(r, geoms, ...) standardGeneric("st_extract"))
 
 #' @rdname st_extract
 #' @export
-setMethod("st_extract", signature(r = "Raster"), .st_extract)
-
-#' @rdname st_extract
-#' @export
-setMethod("st_extract", signature(r = "SpatRaster"), .st_extract)
+setMethod("st_extract", signature(r = "RasterLayer"), .st_extract)
 
 #' @export
 #' @rdname st_extract
 setMethod("st_extract", signature(r = "RasterStack"), .st_extract)
+
+#' @rdname st_extract
+#' @export
+setMethod("st_extract", signature(r = "SpatRaster"), .st_extract)
 
 #' @export
 #' @rdname st_extract

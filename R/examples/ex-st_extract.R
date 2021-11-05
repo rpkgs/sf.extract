@@ -4,9 +4,9 @@ library(sf.extract)
 library(extract2)
 
 # shape files
-file_shp = system.file("shp/Continents.shp", package = "extract2")
+file_shp = system.file("shp/Continents.shp", package = "sf.extract")
 # raster files
-files = system.file("raster/PML2_yearly_static2017-01-01.tif", package = "extract2")
+files = system.file("raster/PML2_yearly_static2017-01-01_2deg.tif", package = "sf.extract")
 
 st <- sf::read_sf(file_shp)
 shp <- sf::as_Spatial(st)

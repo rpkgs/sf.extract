@@ -16,7 +16,7 @@ autom4te.cache/
 config.log
 config.status
 docs
-# inst
+inst/shp
 *.gpkg-wal
 *.gpkg-shm
 
