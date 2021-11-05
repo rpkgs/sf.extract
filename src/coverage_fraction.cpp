@@ -29,7 +29,7 @@ Rcpp::S4 CPP_coverage_fraction(Rcpp::S4 & rast, const Rcpp::RawVector & wkb, boo
   try {
     GEOSAutoHandle geos;
     Rcpp::Environment raster = Rcpp::Environment::namespace_env("raster");
-    Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+    Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
     Rcpp::Function rasterFn = raster["raster"];
     Rcpp::Function crsFn = xx[".crs"];
 

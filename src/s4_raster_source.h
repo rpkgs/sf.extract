@@ -46,7 +46,7 @@ public:
     if (!(box == m_last_box)) {
       m_last_box = box;
 
-      Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+      Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
       Rcpp::Function getValuesBlockFn = xx[".getValuesBlock"];
 
       if (cropped_grid.empty()) {

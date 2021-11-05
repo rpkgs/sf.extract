@@ -16,7 +16,7 @@
 using Grid = exactextract::Grid<exactextract::bounded_extent>;
 
 Grid make_grid(const Rcpp::S4 & rast) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function resFn = xx[".res"];
   Rcpp::Function extentFn = xx[".extent"];
 
@@ -35,7 +35,7 @@ Grid make_grid(const Rcpp::S4 & rast) {
 }
 
 int get_nlayers(Rcpp::S4 & rast) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function nlayersFn = xx[".numLayers"];
 
   Rcpp::NumericVector nlayersVec = nlayersFn(rast);
@@ -45,7 +45,7 @@ int get_nlayers(Rcpp::S4 & rast) {
 
 // Determine the column index in 'rast' for every column in 'grid'
 Rcpp::IntegerVector cols_for_x(Rcpp::S4 & rast, Grid grid) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function colFromX = xx[".colFromX"];
 
   // Since the coverage fraction grid is potentially higher-resolution than
@@ -66,7 +66,7 @@ Rcpp::IntegerVector cols_for_x(Rcpp::S4 & rast, Grid grid) {
 
 // Determine the row index in 'rast' for every row in 'grid'
 Rcpp::IntegerVector rows_for_y(Rcpp::S4 & rast, Grid grid) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function rowFromY = xx[".rowFromY"];
 
   Rcpp::NumericVector y(grid.rows());
@@ -83,7 +83,7 @@ Rcpp::IntegerVector rows_for_y(Rcpp::S4 & rast, Grid grid) {
 // Although 'grid' can provide x values directly, this ensures consistency
 // with values provided by the 'raster' package.
 Rcpp::NumericVector get_x_values(Rcpp::S4 & rast, Grid grid) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function xFromCol = xx[".xFromCol"];
 
   Rcpp::IntegerVector cols = cols_for_x(rast, grid);
@@ -94,7 +94,7 @@ Rcpp::NumericVector get_x_values(Rcpp::S4 & rast, Grid grid) {
 // Although 'grid' can provide y values directly, this ensures consistency
 // with values provided by the 'raster' package.
 Rcpp::NumericVector get_y_values(Rcpp::S4 & rast, Grid grid) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function yFromRow = xx[".yFromRow"];
 
   Rcpp::IntegerVector rows = rows_for_y(rast, grid);
@@ -102,7 +102,7 @@ Rcpp::NumericVector get_y_values(Rcpp::S4 & rast, Grid grid) {
 }
 
 Rcpp::NumericVector get_cell_numbers(Rcpp::S4 & rast, Grid grid) {
-  Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
+  Rcpp::Environment xx = Rcpp::Environment::namespace_env("sf.extract");
   Rcpp::Function cellFromRowCol = xx[".cellFromRowCol"];
 
   Rcpp::IntegerVector cols = cols_for_x(rast, grid);
