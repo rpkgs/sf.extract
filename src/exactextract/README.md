@@ -56,7 +56,7 @@ sudo make install
 ### Using `exactextract`
 
 `exactextract` provides a simple command-line interface that uses GDAL to read a vector data source and one or more raster files, perform zonal statistics, and write output to a CSV, netCDF, or other tabular formats supported by GDAL.
-In addition to the command-line executable, an R package ([`sf.extract`](https://github.com/isciences/sf.extract)) allows some functionality of `exactextract` to be used with R `sf` and `raster` objects.
+In addition to the command-line executable, an R package ([`exactextractr`](https://github.com/isciences/exactextractr)) allows some functionality of `exactextract` to be used with R `sf` and `raster` objects.
 
 Command line documentation can be accessed by `exactextract -h`.
 

@@ -42,6 +42,7 @@ using exactextract::RasterSource;
 #include <vector>
 #include <string>
 
+
 // [[Rcpp::export]]
 Rcpp::List CPP_exact_extract_wkb(Rcpp::S4 & rast, const Rcpp::RawVector & wkb) {
   GEOSAutoHandle geos;

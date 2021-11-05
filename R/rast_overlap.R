@@ -29,6 +29,7 @@ rast_overlap <- function(r, wkb,
     names = names(r)
     if (length(names) <= 1) names = "values"
 
+    # exactextractr:::
     CPP_exact_extract(r, NULL, wkb,
         default_value, default_weight,
         include_xy ,

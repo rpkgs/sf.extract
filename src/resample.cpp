@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020 ISciences, LLC.
+// Copyright (c) 2018-2021 ISciences, LLC.
 // All rights reserved.
 //
 // This software is licensed under the Apache License, Version 2.0 (the "License").
@@ -53,8 +53,9 @@ Rcpp::S4 CPP_resample(Rcpp::S4 & rast_in,
                       const Rcpp::StringVector & stat) {
   try {
     Rcpp::Environment raster = Rcpp::Environment::namespace_env("raster");
+    Rcpp::Environment xx = Rcpp::Environment::namespace_env("exactextractr");
     Rcpp::Function rasterFn = raster["raster"];
-    Rcpp::Function valuesFn = raster["values<-"];
+    Rcpp::Function valuesFn = xx[".setValues"];
 
     S4RasterSource rsrc(rast_in);
 
