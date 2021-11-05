@@ -8,6 +8,7 @@
 #' 
 #' @keywords internal
 #' @import sf
+#' @importFrom data.table as.data.table
 #' @export
 rast_overlap <- function(r, wkb,
     default_value = NA_real_,
@@ -28,7 +29,7 @@ rast_overlap <- function(r, wkb,
     names = names(r)
     if (length(names) <= 1) names = "values"
 
-    sf.extract:::CPP_exact_extract(r, NULL, wkb,
+    CPP_exact_extract(r, NULL, wkb,
         default_value, default_weight,
         include_xy ,
         include_cell ,
