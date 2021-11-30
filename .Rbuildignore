@@ -14,6 +14,5 @@ CONTRIBUTING.md
 ^vignettes.*cache$
 .gpkg-shm$
 .gpkg-wal
-^inst$
 ^README\.Rmd$
 ^LICENSE\.md$

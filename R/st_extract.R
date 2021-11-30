@@ -22,16 +22,15 @@ NULL
   geoms = check_overlap(geoms, r)
   names = names(r)
   
-  readStart(r)
-  on.exit(readStop(r))
+  .startReading(r)
+  on.exit(.stopReading(r))
   
   res = llply(geoms, function(ret){
     # v <- readValues(x, ...)
-    vals <- terra::readValues(r,
+    vals <- .getValuesBlock(r,
       row = ret$row,
       col = ret$col,
-      nrow = ret$nrow, ncol = ret$ncol, 
-      mat = TRUE
+      nrow = ret$nrow, ncol = ret$ncol
     ) %>% set_colnames(names)
     
     fun(vals, ret$fraction, area = ret$area, weight = weight, ...)
@@ -50,6 +49,10 @@ setMethod("st_extract", signature(r = "RasterLayer"), .st_extract)
 #' @export
 #' @rdname st_extract
 setMethod("st_extract", signature(r = "RasterStack"), .st_extract)
+
+#' @export
+#' @rdname st_extract
+setMethod("st_extract", signature(r = "RasterBrick"), .st_extract)
 
 #' @rdname st_extract
 #' @export
