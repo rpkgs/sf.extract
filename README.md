@@ -11,9 +11,9 @@ The goal of sf.extract is to …
 ## Installation
 
 ``` r
-# remotes::install_gitlab("cug-hydro/sf.extract") # not used
+# remotes::install_gitlab("r-pkgs/sf.extract")    # 
 # remotes::install_github("rpkgs/sf.extract")     # only for private
-install.packages("sf.extract-0.1.2.tar.gz", repos = NULL, type = "source", dependencies = TRUE)
+install.packages("sf.extract-0.1.4.tar.gz", repos = NULL, type = "source", dependencies = TRUE)
 ```
 
 ## Example
