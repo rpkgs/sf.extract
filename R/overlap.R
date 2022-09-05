@@ -93,6 +93,8 @@ check_overlap <- function(geoms, r) {
     geoms
 }
 
+# ' @return list of wkb object
+#' @export 
 check_wkb <- function(geoms) {
     if ("SpatialPolygonsDataFrame" %in% class(geoms)) {
         geoms %<>% sf::st_as_sf()
@@ -102,9 +104,11 @@ check_wkb <- function(geoms) {
         geoms <- sf::st_as_binary(sf::st_geometry(geoms), EWKB = TRUE) %>%
             set_names(Id)
         attr(geoms, "Id") <- Id
-    } else {
-        if (is.null(attr(geoms, "Id")))
-            attr(geoms, "Id") <- seq_along(geoms)
     }
+    if ("raw" %in% class(geoms)) { # wkb object
+        geoms <- list(geoms)
+    }
+    if (is.null(attr(geoms, "Id")))
+        attr(geoms, "Id") <- seq_along(geoms)
     geoms
 }

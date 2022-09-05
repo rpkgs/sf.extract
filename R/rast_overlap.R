@@ -3,8 +3,17 @@
 #' Extract raster overlapping info by the function `[sf.extract:::CPP_exact_extract()]`
 #' 
 #' @param r raster
-#' @param wkb WKB objects, e.g.
+#' @param wkb wkb objects, e.g.
 #' `sf::st_as_binary(sf::st_geometry(basins), EWKB=TRUE)`
+#' 
+#' @note 
+#' !!!Please do not use function.
+#' 
+#' @return A data.frame, with the variables of 
+#' - `values`            : values of raster `r` 
+#' - `weight`            : cell area (in m^2)
+#' - `cell`              : cell id
+#' - `coverage_fraction` : fraction
 #' 
 #' @keywords internal
 #' @import sf
@@ -17,7 +26,8 @@ rast_overlap <- function(r, wkb,
     include_xy = FALSE,
     include_cell = TRUE,
     include_area = FALSE,
-    include_cols = NULL,
+    include_cols = NULL, 
+    new = TRUE,
     coverage_area = FALSE)
 {
     area_weights = TRUE
@@ -29,8 +39,8 @@ rast_overlap <- function(r, wkb,
     names = names(r)
     if (length(names) <= 1) names = "values"
 
-    # exactextractr:::
-    CPP_exact_extract(r, NULL, wkb,
+    FUN = ifelse(new, CPP_exact_extract, exactextractr:::CPP_exact_extract)
+    FUN(r, NULL, wkb,
         default_value, default_weight,
         include_xy ,
         include_cell ,
@@ -38,6 +48,9 @@ rast_overlap <- function(r, wkb,
         area_weights ,
         coverage_area ,
         area_method ,
+        # weights = NULL,
+        # coverage_areas=FALSE,
+        # p_area_method = "",
         include_cols = NULL,
         src_names = names,
         p_weights_names = "weight",

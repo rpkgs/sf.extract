@@ -13,16 +13,29 @@ rast_overlap(
   include_cell = TRUE,
   include_area = FALSE,
   include_cols = NULL,
+  new = TRUE,
   coverage_area = FALSE
 )
 }
 \arguments{
 \item{r}{raster}
 
-\item{wkb}{WKB objects, e.g.
+\item{wkb}{wkb objects, e.g.
 \code{sf::st_as_binary(sf::st_geometry(basins), EWKB=TRUE)}}
+}
+\value{
+A data.frame, with the variables of
+\itemize{
+\item \code{values}            : values of raster \code{r}
+\item \code{weight}            : cell area (in m^2)
+\item \code{cell}              : cell id
+\item \code{coverage_fraction} : fraction
+}
 }
 \description{
 Extract raster overlapping info by the function \verb{[sf.extract:::CPP_exact_extract()]}
+}
+\note{
+!!!Please do not use function.
 }
 \keyword{internal}
