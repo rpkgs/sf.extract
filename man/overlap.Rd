@@ -6,7 +6,7 @@
 \alias{check_overlap}
 \title{Get the detailed information of overlapped grids}
 \usage{
-overlap(r, geoms, return.id = FALSE)
+overlap(r, geoms, return.data = FALSE)
 
 getBlockValues(r, blocks, .progress = "none")
 

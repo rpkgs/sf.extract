@@ -21,7 +21,7 @@ if (1) {
     file <- lst_files[[1]][1]#files[1]
 
     lst <- st_extract_par(lst_files, shp)
-    # blocks <- overlap(file, shp, return.id = FALSE)
+    # blocks <- overlap(file, shp, return.data = FALSE)
     # lst = map(lst_files, ~ st_extract(.x, blocks))
     lst2 = map(lst, function(l) {
         map(l, ~ cbind(I = 1:nrow(.x), .x) %>% dplyr::select(-name)) %>%
@@ -39,7 +39,7 @@ if (0) {
     indir = "H:/global_WB/ET/diagnosed_PML/PMLV2_v016"
     lst_files = map(patterns, ~ dir(indir, glue("{.x}.*.tif"), full.names = TRUE))
     file <- lst_files[[1]][1]#files[1]
-    # blocks <- overlap(file, shp, return.id = FALSE)
+    # blocks <- overlap(file, shp, return.data = FALSE)
     # Ipaper::InitCluster(6, kill = FALSE)
     lst <- st_extract_par(lst_files, shp)
     # lst = map(lst_files, ~ st_extract(.x, blocks))

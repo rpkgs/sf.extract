@@ -8,9 +8,12 @@ files <- system.file("raster/PML2_yearly_static2017-01-01_2deg.tif", package = "
 # shape files
 file_shp <- system.file("shp/Continents.shp", package = "sf.extract")
 
+r = rast(files[1])
+
 st <- sf::read_sf(file_shp)
 shp <- sf::as_Spatial(st)
-wkbs = sf::st_as_binary(sf::st_geometry(st), EWKB = TRUE) %>% set_names(st[[1]])
+wkbs <- sf::st_as_binary(sf::st_geometry(st), EWKB = TRUE) %>% set_names(st[[1]])
+blocks <- sf.extract::overlap(r, wkbs)
 
 ## 1. test for different poly obj
 r1 = st_extract(files, st)  # sf obj

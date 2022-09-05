@@ -12,7 +12,7 @@
 #'
 #' @importFrom plyr llply
 #' @export
-overlap <- function(r, geoms, return.id = FALSE) {
+overlap <- function(r, geoms, return.data = FALSE) {
     r %<>% check_raster() %>% .[[1]]
     # r %<>% raster::raster()
     area <- raster::area(raster::raster(r)) %>% rast()
@@ -44,7 +44,7 @@ overlap <- function(r, geoms, return.id = FALSE) {
     }, .progress = "text")
     attr(blocks, "Id") = attr(geoms, "Id")
 
-    if (return.id) {
+    if (return.data) {
         getBlockValues(r, blocks)
     } else {
         blocks
@@ -87,7 +87,7 @@ check_overlap <- function(geoms, r) {
     if ("WKB" %in% class(geoms)) {
         b <- rast(r[[1]]) #%>% readAll()
         Id <- attr(geoms, "Id")
-        geoms <- overlap(b, geoms, return.id = FALSE) %>%
+        geoms <- overlap(b, geoms, return.data = FALSE) %>%
             set_attr("Id", Id)
     }
     geoms

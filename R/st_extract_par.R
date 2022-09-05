@@ -5,7 +5,7 @@ st_extract_par <- function(lst_files, shp) {
     if (!is.list(lst_files)) lst_files = list(lst_files)
     file <- lst_files[[1]][1] # files[1]
 
-    blocks <- overlap(file, shp, return.id = FALSE)
+    blocks <- overlap(file, shp, return.data = FALSE)
     parallel::clusterExport(cl, c("blocks"), environment())
 
     lst = plyr::llply(lst_files, function(files) {

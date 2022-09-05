@@ -9,7 +9,7 @@ shp = read_sf("N:/Research/hydro/globalRunoff/INPUT/shp/globalRunoff_GSIM_10631b
 
 ## 1. overlap and extract separately
 system.time({
-    blocks <- overlap(files[1] %>% raster(), shp, return.id = FALSE) # overlap information for each feature
+    blocks <- overlap(files[1] %>% raster(), shp, return.data = FALSE) # overlap information for each feature
 })
 system.time(lst <- st_extract(files, blocks))
 

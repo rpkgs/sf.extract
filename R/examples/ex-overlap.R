@@ -24,7 +24,7 @@ st = read_sf("data-raw/shp/Continents.shp") %>% as_Spatial()
 
 grid@data <- d[, 2]
 t1 = system.time(r <- over(grid, st) )
-t2 = system.time(laps <- overlap(grid, st, return.id = TRUE))
+t2 = system.time(laps <- overlap(grid, st, return.data = TRUE))
 print(t1)
 print(t2)
 # 60X times faster
