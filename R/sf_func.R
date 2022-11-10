@@ -6,13 +6,15 @@
 #' @param area grid area
 #'
 #' @example R/examples/ex_sf_func.R
-#' 
+#'
 #' @importFrom plyr llply
 #' @import matrixStats
 #' @export
 sf_func = function(FUN) {
     function(vals, fraction, area, weight = TRUE, ...) {
         if (weight) fraction = fraction * area
+        fraction[fraction < 0] = 0 # make sure fraction is positive, v20221110
+        # colWeightedMeans(vals, fraction, na.rm = TRUE)
         FUN(vals, fraction, na.rm = TRUE) %>% set_names(colnames(vals))
     }
 }

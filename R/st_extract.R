@@ -32,7 +32,6 @@ NULL
       col = ret$col,
       nrow = ret$nrow, ncol = ret$ncol
     ) %>% set_colnames(names)
-    
     fun(vals, ret$fraction, area = ret$area, weight = weight, ...)
   }, .progress = "text")
   do.call(rbind, res) %>% as.data.frame() %>%
