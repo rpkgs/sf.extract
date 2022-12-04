@@ -16,3 +16,4 @@ CONTRIBUTING.md
 .gpkg-wal
 ^README\.Rmd$
 ^LICENSE\.md$
+^\.github$
