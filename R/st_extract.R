@@ -34,7 +34,7 @@ NULL
     ) %>% set_colnames(names)
     fun(vals, ret$fraction, area = ret$area, weight = weight, ...)
   }, .progress = "text")
-  do.call(rbind, res) %>% as.data.frame() %>%
+  do.call(rbind, res) %>% as.data.table() %>%
     set_rownames(NULL) %>%
     cbind(name = attr(geoms, "Id"), .) %>% set_names_head(name_col1)
 }
