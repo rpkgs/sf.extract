@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/rpkgs/sf.extract/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rpkgs/sf.extract/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/rpkgs/sf.extract/branch/master/graph/badge.svg)](https://codecov.io/gh/rpkgs/sf.extract)
+<!-- [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%203%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-3.0.html) -->
+<!-- [![CRAN](http://www.r-pkg.org/badges/version/sf.extract)](https://cran.r-project.org/package=sf.extract) -->
 <!-- badges: end -->
 
 The goal of sf.extract is to …
@@ -130,5 +133,5 @@ st_extract(b_in, blocks, fun = sf_var, weight = TRUE)
 
 ## References
 
-1.  <https://github.com/isciences/exactextract>
-2.  <https://github.com/isciences/exactextractr>
+1. <https://github.com/isciences/exactextract>
+2. <https://github.com/isciences/exactextractr>
